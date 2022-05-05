@@ -9,7 +9,7 @@ export default function login({ providers }) {
         return (
           <div key={provider.name}>
             <button
-              className="bg-[#1ed760] py-2 px-5 rounded-full font-semibold text-[#f0f0f0] active:outline active:outline-[3px] active:outline-white active:outline-offset-[3px]"
+              className="bg-[#1ed760] transition hover:bg-[#2cb95e] py-3 px-10 rounded-full font-semibold text-[#f0f0f0] active:outline active:outline-[3px] active:outline-white active:outline-offset-[3px]"
               onClick={() => {
                 signIn(provider.id, { callbackUrl: "/" });
               }}
