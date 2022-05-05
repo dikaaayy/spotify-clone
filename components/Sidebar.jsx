@@ -5,7 +5,7 @@ export default function Sidebar() {
   const { data: session, status } = useSession();
   return (
     <div>
-      <div className="text-[#626262] pl-5 pt-5 border-r-gray-800">
+      <div className="text-[#626262] text-sm md:text-base pt-5 pl-5 pr-4 border-r-[1px] border-[#626262] overflow-y-scroll h-screen scrollbar-hide md:w-[21vw] xl:w-[13vw]">
         <div className="space-y-2">
           <button
             className="flex items-center gap-x-2 hover:text-white transition"
@@ -13,41 +13,41 @@ export default function Sidebar() {
               signOut();
             }}
           >
-            <p className="text-lg font-semibold">Logout</p>
+            <p className="font-semibold">Logout</p>
           </button>
           <button className="flex items-center gap-x-2 hover:text-white transition">
-            <HomeIcon className="h-6" />
-            <p className="text-lg font-semibold">Home</p>
+            <HomeIcon className="h-5 lg:h-6" />
+            <p className="font-semibold">Home</p>
           </button>
           <button className="flex items-center gap-x-2 hover:text-white transition">
-            <SearchIcon className="h-6" />
-            <p className="text-lg font-semibold">Search</p>
+            <SearchIcon className="h-5 lg:h-6" />
+            <p className="font-semibold">Search</p>
           </button>
           <button className="flex items-center gap-x-2 hover:text-white transition">
-            <BookmarkAltIcon className="h-6" />
-            <p className="text-lg font-semibold">Your Library</p>
+            <BookmarkAltIcon className="h-5 lg:h-6" />
+            <p className="font-semibold">Your Library</p>
           </button>
           <hr className="border-[#626262] border-t-[1px] mt-3" />
         </div>
         <div className="mt-3 space-y-2">
           <button className="flex items-center gap-x-2 hover:text-white transition">
-            <PlusCircleIcon className="h-6" />
-            <p className="text-lg font-semibold">New Playlist</p>
+            <PlusCircleIcon className="h-5 lg:h-6" />
+            <p className="font-semibold">New Playlist</p>
           </button>
           <button className="flex items-center gap-x-2 hover:text-white transition">
-            <HeartIcon className="h-6" />
-            <p className="text-lg font-semibold">Liked Song</p>
+            <HeartIcon className="h-5 lg:h-6" />
+            <p className="font-semibold">Liked Song</p>
           </button>
           <button className="flex items-center gap-x-2 hover:text-white transition">
-            <RssIcon className="h-6" />
-            <p className="text-lg font-semibold">Explore</p>
+            <RssIcon className="h-5 lg:h-6" />
+            <p className="font-semibold">Explore</p>
           </button>
-          <hr className="border-[#626262] border-t-[1px] mt-3" />
+          <hr className="border-[#626262] border-t-[1px] my-3" />
         </div>
-        <div>
-          <p className="text-lg font-semibold">P1</p>
-          <p className="text-lg font-semibold">P1</p>
-          <p className="text-lg font-semibold">P1</p>
+        <div className="mt-2">
+          <p className="font-semibold">P1</p>
+          <p className="font-semibold">P1</p>
+          <p className="font-semibold">P1</p>
         </div>
       </div>
     </div>
