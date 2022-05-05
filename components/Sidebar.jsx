@@ -17,7 +17,7 @@ export default function Sidebar() {
             <BookmarkAltIcon className="h-6" />
             <p className="text-lg font-semibold">Your Library</p>
           </button>
-          <hr className="border-t-[1px] mt-3" />
+          <hr className="border-[#626262] border-t-[1px] mt-3" />
         </div>
         <div className="mt-3 space-y-2">
           <button className="flex items-center gap-x-2 hover:text-white transition">
@@ -32,7 +32,7 @@ export default function Sidebar() {
             <RssIcon className="h-6" />
             <p className="text-lg font-semibold">Explore</p>
           </button>
-          <hr className="border-t-[1px] mt-3" />
+          <hr className="border-[#626262] border-t-[1px] mt-3" />
         </div>
         <div>
           <p className="text-lg font-semibold">P1</p>
