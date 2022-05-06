@@ -1,12 +1,16 @@
 import { HomeIcon, SearchIcon, BookmarkAltIcon, PlusCircleIcon, HeartIcon, RssIcon } from "@heroicons/react/outline";
 import { useSession, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { playlistIdState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
+import { truncate } from "./logic";
 
 export default function Sidebar() {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -16,22 +20,10 @@ export default function Sidebar() {
     }
   }, [session, spotifyApi]);
 
-  function truncate(str, len) {
-    return str?.length > len ? str.substr(0, len - 1) + "..." : str;
-  }
-
   return (
     <div>
-      <div className="text-[#626262] text-sm md:text-base pt-5 pl-5 pr-4 border-r-[1px] border-[#626262] overflow-y-scroll h-screen scrollbar-hide md:w-[21vw] xl:w-[13vw]">
-        <div className="space-y-2">
-          <button
-            className="flex items-center gap-x-2 hover:text-white transition duration-100"
-            onClick={() => {
-              signOut();
-            }}
-          >
-            <p className="font-bold">Logout</p>
-          </button>
+      <div className="text-[#626262] text-xs lg:text-sm py-5 pl-5 pr-4 overflow-y-scroll h-[90vh] scrollbar-hide hidden md:block md:w-[21vw] xl:w-[13vw]">
+        <div className="space-y-3">
           <button className="flex items-center gap-x-4 hover:text-white transition duration-100">
             <HomeIcon className="h-5 lg:h-6" />
             <p className="font-bold">Home</p>
@@ -44,9 +36,9 @@ export default function Sidebar() {
             <BookmarkAltIcon className="h-5 lg:h-6" />
             <p className="font-bold">Your Library</p>
           </button>
-          <hr className="border-[#626262] border-t-[1px] mt-3" />
+          <hr className="border-[#626262] border-t-[1px] mt-3 invisible" />
         </div>
-        <div className="mt-3 space-y-2">
+        <div className="mt-6 space-y-3">
           <button className="flex items-center gap-x-4 hover:text-white transition duration-100">
             <PlusCircleIcon className="h-5 lg:h-6" />
             <p className="font-bold">New Playlist</p>
@@ -61,14 +53,19 @@ export default function Sidebar() {
           </button>
           <hr className="border-[#626262] border-t-[1px] my-3" />
         </div>
-        <div className="mt-2 flex flex-col gap-y-2">
+        <div className="mt-2 flex flex-col space-y-3">
           {playlists.map((playlist) => {
             return (
-              <>
-                <button className="flex items-center hover:text-white transition duration-100">
-                  <p className="font-semibold">{truncate(playlist?.name, 23)}</p>
-                </button>
-              </>
+              <div key={playlist.id}>
+                <p
+                  className="font-semibold hover:text-white transition duration-100 cursor-pointer"
+                  onClick={() => {
+                    setPlaylistId(playlist.id);
+                  }}
+                >
+                  {truncate(playlist?.name, 27)}
+                </p>
+              </div>
             );
           })}
         </div>
