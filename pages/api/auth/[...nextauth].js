@@ -14,13 +14,13 @@ const refreshAccessToken = async (token) => {
       ...token,
       accessToken: refreshedToken.access_token,
       accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,
-      refresheToken: refreshedToken.refresh_token ?? token.refreshToken,
+      refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
     };
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return {
       ...token,
-      error: "refresh tokhen",
+      error: "RefreshAccessTokenError",
     };
   }
 };
