@@ -101,7 +101,15 @@ export default function Player() {
     }
   }, [volume]);
 
-  console.log(currentTrackId);
+  useEffect(() => {
+    if (isPlaying) {
+      document.title = songInfo?.name + " • " + songInfo?.artists[0].name;
+    } else {
+      document.title = "Spotify Clone";
+    }
+  }, [isPlaying, setIsPlaying]);
+
+  console.log(songInfo);
 
   return (
     <>

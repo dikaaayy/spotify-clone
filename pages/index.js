@@ -6,13 +6,13 @@ import Player from "../components/Player";
 
 export default function Home() {
   return (
-    <div className="bg-black h-screen overflow-hidden cursor-default select-none font-spotifyCircular">
+    <div className="main-container">
       <Header />
       <main className="flex">
         <Sidebar />
         <Main />
       </main>
-      <div className="grid grid-cols-3 px-5 w-full border-t-[1px] border-[#292929] items-center justify-between text-white h-[10vh] sticky bottom-0 bg-[#181818]">
+      <div className="player-container">
         <Player />
       </div>
     </div>

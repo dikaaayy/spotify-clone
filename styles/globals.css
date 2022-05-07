@@ -24,6 +24,12 @@
   .playlist-sidebar {
     @apply pt-3 pb-3 flex flex-col space-y-3 overflow-y-scroll h-[55vh] scrollbar-hide;
   }
+  .main-container {
+    @apply bg-black h-screen overflow-hidden cursor-default select-none font-spotifyCircular;
+  }
+  .player-container {
+    @apply grid grid-cols-3 px-5 w-full border-t-[1px] border-[#292929] items-center justify-between text-white h-[10vh] sticky bottom-0 bg-[#181818];
+  }
 }
 
 @layer base {
