@@ -17,13 +17,13 @@ export default function Song({ order, item }) {
   };
 
   return (
-    <div className="grid grid-cols-2 group md:grid-cols-5 items-center hover:bg-white hover:bg-opacity-5 rounded-md p-2 pl-4 text-[#B3B3B3]" onDoubleClick={playSong}>
+    <div className="song-grid group" onDoubleClick={playSong}>
       <div className="flex space-x-5 items-center md:col-span-2">
         <p className="basis-6">{order + 1}</p>
         <img loading="lazy" className="w-10 h-10" src={item?.track?.album?.images[0]?.url} alt="song-artwork" />
         <div className="space-y-0">
           <p className="text-white truncate">{item?.track?.name}</p>
-          <p className="text-sm group-hover:text-white cursor-pointer hover:underline">{item?.track?.artists[0]?.name}</p>
+          <p className="song-desc">{item?.track?.artists[0]?.name}</p>
         </div>
       </div>
       <div className="hidden sm:block">

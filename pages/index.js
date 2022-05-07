@@ -6,7 +6,7 @@ import Player from "../components/Player";
 
 export default function Home() {
   return (
-    <div className="bg-black h-screen overflow-hidden cursor-default select-none">
+    <div className="bg-black h-screen overflow-hidden cursor-default select-none font-spotifyCircular">
       <Head>
         <title>Spotify Clone</title>
         <meta name="description" content="Spotify Clone made by Dika for Personal Purpose" />
@@ -17,7 +17,7 @@ export default function Home() {
         <Sidebar />
         <Main />
       </main>
-      <div className="grid grid-cols-3 px-5 border-t-[1px] border-[#292929] items-center justify-between text-white h-[10vh] sticky bottom-0 w-screen bg-[#181818]">
+      <div className="grid grid-cols-3 px-5 w-full border-t-[1px] border-[#292929] items-center justify-between text-white h-[10vh] sticky bottom-0 bg-[#181818]">
         <Player />
       </div>
     </div>

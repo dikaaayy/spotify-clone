@@ -16,3 +16,16 @@ export const durationLogic = (ms) => {
 export function truncate(str, len) {
   return str?.length > len ? str.substr(0, len - 1) + "..." : str;
 }
+
+export const likeLogic = (n) => {
+  if (n === 0) {
+    return;
+  }
+  if (n === 1) {
+    return "1 like";
+  }
+  // const like = n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return `${n} likes`;
+};
+
+export const playlistNameLogic = (playlist) => {};
