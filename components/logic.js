@@ -28,4 +28,14 @@ export const likeLogic = (n) => {
   return `${n} likes`;
 };
 
-export const playlistNameLogic = (playlist) => {};
+export const repeatColor = (repeat) => {
+  if (repeat === "off") {
+    return "text-white";
+  }
+  if (repeat === "context") {
+    return "text-blue-400";
+  }
+  if (repeat === "track") {
+    return "text-green-500";
+  }
+};

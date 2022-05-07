@@ -22,7 +22,7 @@
     @apply w-48 h-[7.5rem] flex flex-col justify-center items-center gap-y-1 bg-black bg-opacity-60 rounded right-12 lg:right-16 top-[4.2rem] text-white absolute;
   }
   .playlist-sidebar {
-    @apply pt-3 pb-1 flex flex-col space-y-3 overflow-y-scroll h-[55.5vh] scrollbar-hide;
+    @apply pt-3 pb-3 flex flex-col space-y-3 overflow-y-scroll h-[55vh] scrollbar-hide;
   }
 }
 
