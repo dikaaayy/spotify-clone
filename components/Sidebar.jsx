@@ -23,7 +23,7 @@ export default function Sidebar() {
   return (
     <>
       <div className="sidebar-container">
-        <spotify>
+        <>
           <a href="/">
             <svg viewBox="0 0 1134 340" class="w-[75%] text-white">
               <path
@@ -32,35 +32,32 @@ export default function Sidebar() {
               ></path>
             </svg>
           </a>
-        </spotify>
+        </>
         <div className="space-y-3 mt-8">
           <button className="sidebar-button flex items-center gap-x-4">
-            <HomeIcon className="h-5 lg:h-6" />
+            <HomeIcon className="h-5 lg:h-7" />
             <p className="font-bold">Home</p>
           </button>
           <button className="sidebar-button flex items-center gap-x-4">
-            <SearchIcon className="h-5 lg:h-6" />
+            <SearchIcon className="h-5 lg:h-7" />
             <p className="font-bold">Search</p>
           </button>
           <button className="sidebar-button flex items-center gap-x-4 pb-6">
-            <BookmarkAltIcon className="h-5 lg:h-6" />
+            <BookmarkAltIcon className="h-5 lg:h-7" />
             <p className="font-bold">Your Library</p>
           </button>
           <button className="sidebar-button flex items-center gap-x-4">
-            <PlusCircleIcon className="h-5 lg:h-6" />
+            <PlusCircleIcon className="h-5 lg:h-7" />
             <p className="font-bold">New Playlist</p>
           </button>
           <button className="sidebar-button flex items-center gap-x-4">
-            <HeartIcon className="h-5 lg:h-6" />
+            <HeartIcon className="h-5 lg:h-7" />
             <p className="font-bold">Liked Song</p>
           </button>
-          <button className="sidebar-button flex items-center gap-x-4">
-            <RssIcon className="h-5 lg:h-6" />
-            <p className="font-bold">Explore</p>
-          </button>
+
           <hr className="border-[#626262] border-t-[1px] my-3" />
         </div>
-        <div className="mt-2 flex flex-col space-y-3 pb-2 overflow-y-scroll h-[53vh] scrollbar-hide">
+        <div className="playlist-sidebar">
           {playlists.map((playlist) => {
             return (
               <div key={playlist.id}>

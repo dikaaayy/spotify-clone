@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Main from "../components/Main";
 import { getSession } from "next-auth/react";
@@ -7,12 +7,7 @@ import Player from "../components/Player";
 export default function Home() {
   return (
     <div className="bg-black h-screen overflow-hidden cursor-default select-none font-spotifyCircular">
-      <Head>
-        <title>Spotify Clone</title>
-        <meta name="description" content="Spotify Clone made by Dika for Personal Purpose" />
-        <link rel="icon" href="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-marilyn-scott-0.png" type="image/x-icon" />
-      </Head>
-
+      <Header />
       <main className="flex">
         <Sidebar />
         <Main />
