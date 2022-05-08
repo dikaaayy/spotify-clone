@@ -7,7 +7,7 @@ import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
 import Profile from "./Profile";
 import { likeLogic } from "./logic";
-import { Image } from "next/image";
+import Image from "next/image";
 
 export default function Main() {
   const spotifyApi = useSpotify();

@@ -1,7 +1,7 @@
 import { signOut, useSession } from "next-auth/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/outline";
 import { useState } from "react";
-import { Image } from "next/image";
+import Image from "next/image";
 
 export default function Profile() {
   const { data: session } = useSession();

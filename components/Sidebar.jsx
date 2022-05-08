@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
 import { truncate } from "./logic";
-import { Link } from "next/link";
+import Link from "next/link";
 
 export default function Sidebar() {
   const spotifyApi = useSpotify();

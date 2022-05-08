@@ -10,7 +10,7 @@ import { isShuffleState, repeatState } from "../atoms/buttonAtom";
 import useSongInfo from "../hooks/useSongInfo";
 import useSpotify from "../hooks/useSpotify";
 import { repeatColor, durationLogic } from "./logic";
-import { Image } from "next/image";
+import Image from "next/image";
 
 export default function Player() {
   const spotifyApi = useSpotify();

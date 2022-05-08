@@ -3,7 +3,7 @@ import useSpotify from "../hooks/useSpotify";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
 import { dateLogic, durationLogic } from "./logic";
 import { truncate } from "./logic";
-import { Image } from "next/image";
+import Image from "next/image";
 
 export default function Song({ order, item }) {
   const spotifyApi = useSpotify();
