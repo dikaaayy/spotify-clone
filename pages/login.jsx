@@ -1,5 +1,4 @@
 import { getProviders, signIn } from "next-auth/react";
-import { Image } from "next/image";
 
 const logo = "https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-green-logo-8.png";
 
@@ -7,7 +6,7 @@ export default function login({ providers }) {
   // console.log(providers);
   return (
     <div className="flex flex-col items-center justify-center bg-black min-h-screen w-full gap-y-6">
-      <Image className="w-52" src={logo} alt="spotify-logo" />
+      <img className="w-52" src={logo} alt="spotify-logo" />
       {Object.values(providers).map((provider) => {
         return (
           <div key={provider.name}>
