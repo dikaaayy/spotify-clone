@@ -10,6 +10,7 @@ import { isShuffleState, repeatState } from "../atoms/buttonAtom";
 import useSongInfo from "../hooks/useSongInfo";
 import useSpotify from "../hooks/useSpotify";
 import { repeatColor, durationLogic } from "./logic";
+import { Image } from "next/image";
 
 export default function Player() {
   const spotifyApi = useSpotify();
@@ -158,7 +159,7 @@ export default function Player() {
   return (
     <>
       <div className="flex gap-x-3 items-center">
-        <img className="w-14 h-14" src={songInfo?.album.images?.[0].url} alt="" />
+        <Image className="w-14 h-14" src={songInfo?.album.images?.[0].url} alt="" />
         <div>
           <p className="text-sm">{songInfo?.name}</p>
           <p className="text-xs text-[#B3B3B3] hover:underline cursor-pointer hover:text-white">{songInfo?.artists[0].name}</p>

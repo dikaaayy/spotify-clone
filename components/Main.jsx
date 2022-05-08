@@ -7,6 +7,7 @@ import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
 import Profile from "./Profile";
 import { likeLogic } from "./logic";
+import { Image } from "next/image";
 
 export default function Main() {
   const spotifyApi = useSpotify();
@@ -40,7 +41,7 @@ export default function Main() {
     <div className="main-container">
       <Profile />
       <section className={`flex px-7 items-end space-x-6 bg-gradient-to-b to-[#121212] ${bgColor} h-80`}>
-        <img src={playlist?.images?.[0].url} className="h-48 w-48 xl:h-[14.5rem] xl:w-[14.5rem] shadow-2xl" alt="playlist-artwork" />
+        <Image src={playlist?.images?.[0].url} className="h-48 w-48 xl:h-[14.5rem] xl:w-[14.5rem] shadow-2xl" alt="playlist-artwork" />
         <div className="text-white flex flex-col gap-y-2 justify-start w-[65vw]">
           <p className="font-semibold text-xs -ml-1">PLAYLIST</p>
           <p className={`text-4xl -ml-1 mb-3 ${playlistLen > 26 ? "xl:text-5xl" : "xl:text-8xl"} font-bold tracking-[-0.05em]`}>{playlist?.name}</p>
