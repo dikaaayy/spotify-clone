@@ -6,7 +6,7 @@ import Player from "../components/Player";
 
 export default function Home() {
   return (
-    <div className="main-container">
+    <div className="whole-container">
       <Header />
       <main className="flex">
         <Sidebar />

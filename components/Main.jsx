@@ -37,7 +37,7 @@ export default function Main() {
   // console.log(playlistLen);
 
   return (
-    <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide bg-[#121212]">
+    <div className="main-container">
       <Profile />
       <section className={`flex px-7 items-end space-x-6 bg-gradient-to-b to-[#121212] ${bgColor} h-80`}>
         <img src={playlist?.images?.[0].url} className="h-48 w-48 xl:h-[14.5rem] xl:w-[14.5rem] shadow-2xl" alt="playlist-artwork" />

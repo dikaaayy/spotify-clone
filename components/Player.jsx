@@ -9,7 +9,7 @@ import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
 import { isShuffleState, repeatState } from "../atoms/buttonAtom";
 import useSongInfo from "../hooks/useSongInfo";
 import useSpotify from "../hooks/useSpotify";
-import { repeatColor } from "./logic";
+import { repeatColor, durationLogic } from "./logic";
 
 export default function Player() {
   const spotifyApi = useSpotify();
@@ -54,7 +54,7 @@ export default function Player() {
   const playPauseHandler = () => {
     spotifyApi.getMyCurrentPlaybackState().then((data) => {
       if (data?.body && data?.body.is_playing) {
-        console.log(data?.body);
+        // console.log(data?.body);
         spotifyApi.pause();
         setIsPlaying(false);
       } else {
@@ -67,6 +67,19 @@ export default function Player() {
   const volumeHandler = (e) => {
     setVolume(Number(e.target.value));
   };
+
+  // const skipNextHandler = () => {
+  //   spotifyApi.skipToNext().then(
+  //     (data) => {
+  //       console.log(data);
+  //       songInfo;
+  //     },
+  //     function (err) {
+  //       //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
+  //       console.log("Something went wrong!", err);
+  //     }
+  //   );
+  // };
 
   const fetchCurrentSong = () => {
     if (!songInfo) {
@@ -81,19 +94,26 @@ export default function Player() {
     }
   };
 
-  useEffect(() => {
-    if (spotifyApi.getAccessToken() && !currentTrackId) {
-      fetchCurrentSong();
-      setVolume(40);
-    }
-  }, [currentTrackId, spotifyApi, session, isPlaying]);
-
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
-      spotifyApi.setVolume(volume).catch((err) => {});
+      spotifyApi.setVolume(volume).catch((e) => {
+        console.error(e);
+      });
     }, 300),
     []
   );
+
+  useEffect(() => {
+    spotifyApi.getMyCurrentPlayingTrack().then(
+      function (data) {
+        // console.log(data.body.item);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
+      }
+    );
+    fetchCurrentSong();
+  }, [currentTrackIdState, spotifyApi, session, isPlaying]);
 
   useEffect(() => {
     if (volume > 0 && volume < 100) {
@@ -107,9 +127,33 @@ export default function Player() {
     } else {
       document.title = "Spotify Clone";
     }
-  }, [isPlaying, setIsPlaying]);
+  }, [isPlaying, currentTrackId, spotifyApi, session]);
 
-  console.log(songInfo);
+  const handleUserKeyPress = useCallback((e) => {
+    const { key, keyCode } = e;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    spotifyApi.getMyCurrentPlaybackState().then((data) => {
+      if (keyCode === 32) {
+        if (data?.body && data?.body.is_playing) {
+          spotifyApi.pause();
+          setIsPlaying(false);
+        } else {
+          spotifyApi.play();
+          setIsPlaying(true);
+        }
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [isPlaying, handleUserKeyPress]);
+
+  // console.log(songInfo);
 
   return (
     <>
@@ -120,12 +164,19 @@ export default function Player() {
           <p className="text-xs text-[#B3B3B3] hover:underline cursor-pointer hover:text-white">{songInfo?.artists[0].name}</p>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-x-5 w-full justify-self-center">
-        <SwitchHorizontalIcon className={`button ${isShuffle ? "text-green-500" : "text-white"}`} onClick={shuffleHandler} />
-        <RewindIcon className="button" />
-        {isPlaying ? <PauseIcon onClick={playPauseHandler} className="button w-10 h-10" /> : <PlayIcon onClick={playPauseHandler} className="button w-10 h-10" />}
-        <FastForwardIcon className="button" />
-        <RefreshIcon className={`button ${repeatColor(repeat)}`} onClick={repeatHandler} />
+      <div>
+        <div className="flex items-center justify-center gap-x-5 w-full justify-self-center">
+          <SwitchHorizontalIcon className={`button ${isShuffle ? "text-green-500" : "text-white"}`} onClick={shuffleHandler} />
+          <RewindIcon className="button" />
+          {isPlaying ? <PauseIcon onClick={playPauseHandler} className="button w-10 h-10" /> : <PlayIcon onClick={playPauseHandler} className="button w-10 h-10" />}
+          <FastForwardIcon className="button" />
+          <RefreshIcon className={`button ${repeatColor(repeat)}`} onClick={repeatHandler} />
+        </div>
+        <div className="flex items-center gap-x-3">
+          <p className="text-xs">1:00</p>
+          <input className="h-1 w-full" type="range" min={0} max={100} value={50} disabled />
+          <p className="text-xs">{durationLogic(songInfo?.duration_ms)}</p>
+        </div>
       </div>
       <div className="flex gap-x-2 justify-self-end items-center">
         {volume > 0 ? (
@@ -138,7 +189,7 @@ export default function Player() {
         ) : (
           <VolumeOffIcon className="button h-5 w-5" />
         )}
-        <input className="w-16 md:w-28" onChange={volumeHandler} type="range" min={0} max={100} value={volume} name="" id="" />
+        <input className="w-16 h-1 md:w-28" onChange={volumeHandler} type="range" min={0} max={100} value={volume} name="" id="" />
         <VolumeUpIcon
           onClick={() => {
             volume < 100 && setVolume(volume + 5);

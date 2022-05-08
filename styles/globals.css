@@ -24,11 +24,23 @@
   .playlist-sidebar {
     @apply pt-3 pb-3 flex flex-col space-y-3 overflow-y-scroll h-[55vh] scrollbar-hide;
   }
-  .main-container {
+  .whole-container {
     @apply bg-black h-screen overflow-hidden cursor-default select-none font-spotifyCircular;
   }
   .player-container {
     @apply grid grid-cols-3 px-5 w-full border-t-[1px] border-[#292929] items-center justify-between text-white h-[10vh] sticky bottom-0 bg-[#181818];
+  }
+  .profile-modal-button {
+    @apply pl-2 mx-1 pr-1 py-2 hover:bg-white hover:bg-opacity-10 rounded-sm cursor-pointer text-sm;
+  }
+  .profile-container {
+    @apply bg-black bg-opacity-70 hover:opacity-95 h-[3rem] rounded-full flex absolute right-10 lg:right-14 top-4 transition-all cursor-pointer;
+  }
+  .songs-container {
+    @apply px-10 pt-5 text-white flex flex-col space-y-2 pb-6;
+  }
+  .main-container {
+    @apply flex-grow h-[90vh] overflow-y-scroll scrollbar-hide bg-[#121212];
   }
 }
 

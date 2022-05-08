@@ -7,7 +7,7 @@ export default function Songs() {
   const playlist = useRecoilValue(playlistState);
   return (
     <>
-      <div className="px-10 pt-5 text-white flex flex-col space-y-2 pb-20">
+      <div className="songs-container">
         <div className="grid md:grid-cols-5 items-center pt-6 pb-2 pl-4 text-[#B3B3B3] text-xs font-semibold">
           <div className="flex gap-x-9">
             <p>#</p>
