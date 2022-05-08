@@ -3,7 +3,6 @@ import useSpotify from "../hooks/useSpotify";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
 import { dateLogic, durationLogic } from "./logic";
 import { truncate } from "./logic";
-import Image from "next/image";
 
 export default function Song({ order, item }) {
   const spotifyApi = useSpotify();
@@ -22,7 +21,7 @@ export default function Song({ order, item }) {
     <div className="song-grid group" onDoubleClick={playSong}>
       <div className="flex space-x-5 items-center md:col-span-2">
         <p className="basis-6">{order + 1}</p>
-        <Image loading="lazy" className="w-10 h-10" src={item?.track?.album?.images[0]?.url} alt="song-artwork" />
+        <img loading="lazy" className="w-10 h-10" src={item?.track?.album?.images[0]?.url} alt="song-artwork" />
         <div className="space-y-0">
           <p className="text-white">{truncate(item?.track?.name, 50)}</p>
           <p className="song-desc">{item?.track?.artists[0]?.name}</p>

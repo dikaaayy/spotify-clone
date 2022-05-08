@@ -1,7 +1,6 @@
 import { signOut, useSession } from "next-auth/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/outline";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function Profile() {
   const { data: session } = useSession();
@@ -18,7 +17,7 @@ export default function Profile() {
     <>
       <div className="profile-container" onClick={navHandler}>
         <div className="flex items-center justify-center gap-x-2 pr-2 pl-1">
-          <Image src={session?.user?.image} alt="user-image" className="w-10 h-10 rounded-full" />
+          <img src={session?.user?.image} alt="user-image" className="w-10 h-10 rounded-full" />
           <p className="text-white text-sm font-semibold">{session?.user?.name}</p>
           <button>{isOpen ? <ChevronUpIcon className="text-white w-5" /> : <ChevronDownIcon className="text-white w-5" />}</button>
         </div>
