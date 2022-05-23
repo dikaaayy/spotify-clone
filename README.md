@@ -1,8 +1,6 @@
-# Spotify Clone
+# Spotify Web 'Player'
 
 This project was made with NextJS, recoil for the state management, and TailwindCSS for styling. This portfolio project still on progress to create spotify's comprehensive feature. There will be few bugs/error here and there but i'm trying to fix it!
-
-Inspired by [Sonny Sangha💌](https://github.com/sonnysangha)
 
 ## Preview of the Web
 
