@@ -125,7 +125,7 @@ export default function Player() {
     if (isPlaying) {
       document.title = songInfo?.name + " • " + songInfo?.artists[0].name;
     } else {
-      document.title = "Spotify Clone";
+      document.title = "Spotify Web Player";
     }
   }, [isPlaying, currentTrackId, spotifyApi, session]);
 

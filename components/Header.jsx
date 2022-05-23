@@ -5,7 +5,7 @@ import React from "react";
 export default function Header() {
   return (
     <Head>
-      <title>Spotify Clone</title>
+      <title>Spotify Web Player</title>
       <link rel="icon" href="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-marilyn-scott-0.png" type="image/x-icon" />
 
       <link rel="canonical" href="https://spotify.andikay.me/" />
