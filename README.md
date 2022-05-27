@@ -18,7 +18,7 @@ npm install
 After that setup the required environment variables at the root directory such as below
 ```.env.local``` 
 ```bash
-NEXTAUTH_URL=http://localhost:3000 #default root of the application
+NEXTAUTH_URL=http://localhost:3000 #default route of the application
 NEXT_PUBLIC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxx #get your credentials at https://developer.spotify.com/dashboard/
 NEXT_PUBLIC_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxx #get your credentials at https://developer.spotify.com/dashboard/
 JWT_SECRET=xxxxxxxxxxxxxxxx #your JWT secret
