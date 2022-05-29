@@ -10,6 +10,8 @@ You can access the preview of this project in [here](http://andikay.me)
 
 ## How to use
 
+**The current live application uses my spotify developer’s API credentials. You must clone the project and use your spotify developer’s API credentials and  if you want to log in.**
+
 ```bash
 git clone https://github.com/dikaaayy/spotify-web-player.git
 npm install
